@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "AddContact";
+}
+
+<link href="~/css/ownStylecss.css" rel="stylesheet" />
+
+<style type="text/css">
+    .btn {
+        background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+        padding: 3px 7px;
+        color: #333;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #666;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+</style>
+
+<body style="margin-left:20px; font-size:20px;">
+    <div>
+        <form action="~/MyDefault/GetDataFromViewField" method="post">
+            <label>Фамилия</label><br/>
+            <input type="text" name="surname" value="" /><br/>
+            <label>Имя</label><br />
+            <input type="text" name="name" value="" /><br />
+            <label>Отчество</label><br />
+            <input type="text" name="fatherName" value="" /><br />
+            <label>Номер телефона</label><br />
+            <input type="text" name="telephoneNumber" value="" /><br />
+            <label>Адрес проживания</label><br />
+            <input type="text" name="residenceAdress" value="" /><br />
+            <label>Описание</label><br />
+            <input type="text" name="description" value="" /><br />
+            <br />
+            <p><input type="submit" class="btn" value="Добавить" /></p>
+        </form>
+    </div>
+    <hr />
+</body>

@@ -1,0 +1,81 @@
+﻿@using Project19.Entitys
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/css/ownStylecss.css" rel="stylesheet" />
+<link href="~/css/stylecss.css" rel="stylesheet" />
+<script src="~/js/scripts.js"></script>
+
+<h1 class="fontStyle"> Список клиентов</h1>
+<style type="text/css">
+.btn{
+   background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+   background: -webkit-gradient(linear, 0 0, 0  100%, from(#D0ECF4), to(#D0ECF4), color-stop(0.5, #5BC9E1));
+   padding: 3px 7px;
+   color: #333;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   border-radius: 5px;
+   border: 1px solid #666;
+   margin-left:20px; 
+   font-size:20px;
+}
+</style>
+<br/>
+<table class="table">
+    <thead>
+        <tr style="font-size:20px">
+            <th width="50">
+                ID
+            </th>
+            <th width="200">
+                Фамилия
+            </th>
+            <th width="200">
+                Имя
+            </th>
+            <th width="200">
+                Отчество
+            </th>
+            <th width="100">
+            </th>
+            <th width="100">
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Contact contact in ViewBag.Contacts)
+        {
+            <tr style="font-size:20px">
+                <td>
+                    <input type="button" value="@contact.ID" onclick="location.href='@Url.Action("Details", "MyDefault", new { id = contact.ID})'" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => contact.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => contact.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => contact.FatherName)
+                </td>
+                <td>
+                    <input type="button" class="btn" value="Изменить" onclick="location.href='@Url.Action("Change", "MyDefault", new { id = contact.ID})'" />
+                </td>
+                <td>
+                    <form action="~/MyDefault/Delete/@contact.ID" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="submit" class="btn" value="Удалить">
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/MyDefault/AddContact" class="btn">Добавить контакт</a>
+<br />
+<br />
+    
