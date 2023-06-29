@@ -23,6 +23,7 @@ namespace Project19.Controllers
         public IActionResult Index()
         {
             ViewBag.Contacts = new DataContext().Contacts;
+            ViewData["Tittle"] = "Index";
             return View();
         }
 
@@ -33,6 +34,7 @@ namespace Project19.Controllers
         [HttpGet]
         public IActionResult AddContact()
         {
+            ViewData["Tittle"] = "AddContact";
             return View();
         }
 
@@ -49,6 +51,7 @@ namespace Project19.Controllers
         [HttpGet]
         public async Task<IActionResult> Change(int id)
         {
+            ViewData["Tittle"] = "Change";
             using (var db = new DataContext())
             {
                 await
@@ -157,6 +160,7 @@ namespace Project19.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            ViewData["Tittle"] = "Details";
             using (var db = new DataContext()) 
             { 
                 foreach(var contact in db.Contacts)
@@ -184,6 +188,7 @@ namespace Project19.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["Tittle"] = "Delete";
             Contact newConcreteContact = new Contact()
             {
                 ID = 0,
@@ -263,12 +268,6 @@ namespace Project19.Controllers
                 //await db.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
             }
-        }
-
-        public IActionResult NewLayout()
-        {
-            ViewData["Tittle"] = "NewLayout";
-            return View();
         }
     }
 }
